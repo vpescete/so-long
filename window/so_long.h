@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 11:40:01 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/04 12:15:19 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/04 12:38:42 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		ft_map_height(char	*map_name);
 void	ft_load_game(t_game *game, t_textures *images, void *mlx);
 int		ft_check_error(int ac, char **av);
 int		check_ber_ext(char *av, size_t len);
-void	ft_charge_map_on_screen(char **map, int count, t_textures *texuters, t_game *game);
+void	ft_charge_map_on_screen(char **map, int count, t_textures *textures, t_game *game, void *mlx);
 
 // void	ft_open_win(void);
 // void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

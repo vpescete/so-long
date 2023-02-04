@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 13:35:22 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/04 12:02:29 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/04 12:38:30 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_map_height(char *map_name)
 	return (count);
 }
 
-void	ft_charge_map_on_screen(char **map, int count, t_textures *textures, t_game *game)
+void	ft_charge_map_on_screen(char **map, int count, t_textures *textures, t_game *game, void *mlx)
 {
 	int	i;
 	int	j;
@@ -61,13 +61,13 @@ void	ft_charge_map_on_screen(char **map, int count, t_textures *textures, t_game
 		while (j < ft_strlen(map[i]))
 		{
 			if (map[i][j] == '1')
-				mlx_put_image_to_window(game->mlx, game->mlx_win, textures->wall, j * 64, i * 64);
+				mlx_put_image_to_window(mlx, game->mlx_win, textures->wall, j * 64, i * 64);
 			if (map[i][j] == '0')
-				mlx_put_image_to_window(game->mlx, game->mlx_win, textures->background, j * 64, i * 64);
+				mlx_put_image_to_window(mlx, game->mlx_win, textures->background, j * 64, i * 64);
 			if (map[i][j] == 'E')
-				mlx_put_image_to_window(game->mlx, game->mlx_win, textures->escape, j * 64, i * 64);
+				mlx_put_image_to_window(mlx, game->mlx_win, textures->escape, j * 64, i * 64);
 			if (map[i][j] == 'P')
-				mlx_put_image_to_window(game->mlx, game->mlx_win, textures->player, j * 64, i * 64);
+				mlx_put_image_to_window(mlx, game->mlx_win, textures->player, j * 64, i * 64);
 			j++;
 		}
 		i++;
