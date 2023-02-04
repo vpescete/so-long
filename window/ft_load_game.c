@@ -6,17 +6,16 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:06:31 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/04 11:46:58 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/04 12:10:46 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_load_game(t_game *game, t_textures *images)
+void	ft_load_game(t_game *game, t_textures *images, void *mlx)
 {
 	int		*w;
 	int		*h;
-	void	*mlx;
 	void	*mlx_win;
 
 	game->mlx = mlx_init();

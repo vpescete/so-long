@@ -6,13 +6,11 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 13:35:22 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/04 11:10:26 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/04 12:02:29 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
 #include "../window/so_long.h"
-#include "../get_next_line/get_next_line.h"
 
 char	**ft_load_map(char *map_name)
 {
