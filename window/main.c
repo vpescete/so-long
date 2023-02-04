@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:11:32 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/04 12:38:54 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/04 13:11:36 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	main(int ac, char **av)
 	if (check_wall(map, count) == 1)
 		printf("checked wall !!!!\n");
 	mlx = mlx_init();
-	ft_load_game(game, images, mlx);
+	images = ft_load_img(mlx);
+	game = ft_load_game(images, mlx);
 	game->mlx_win = mlx_new_window(mlx, 1920, 1080, "Dino & Morty!");
 	ft_charge_map_on_screen(map, count, images, game, mlx);
 	mlx_loop(mlx);
