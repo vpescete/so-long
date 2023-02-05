@@ -6,11 +6,11 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 15:55:03 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/03 18:47:20 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/05 12:01:18 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+// #include "so_long.h"
 
 // void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 // {
