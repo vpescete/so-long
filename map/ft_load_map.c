@@ -6,11 +6,11 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 13:35:22 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/04 12:38:30 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:22:48 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../window/so_long.h"
+#include "../game/so_long.h"
 
 char	**ft_load_map(char *map_name)
 {
@@ -49,27 +49,68 @@ int	ft_map_height(char *map_name)
 	return (count);
 }
 
-void	ft_charge_map_on_screen(char **map, int count, t_textures *textures, t_game *game, void *mlx)
+void	ft_base_layer(int count, int len, t_textures *textures, t_game *game)
 {
 	int	i;
 	int	j;
-
+	
 	i = 0;
 	while (i < count)
 	{
 		j = 0;
-		while (j < ft_strlen(map[i]))
+		while (j < len)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, textures->background, j * 64, i * 64);
+		i++;
+	}
+}
+
+void	ft_charge_map_on_screen(t_game *game)
+{
+	int	i;
+	int	j;
+	int	trigger;
+
+	i = 0;
+	while (i < game->count)
+	{
+		j = 0;
+		while (j < ft_strlen(game->map[i]))
 		{
-			if (map[i][j] == '1')
-				mlx_put_image_to_window(mlx, game->mlx_win, textures->wall, j * 64, i * 64);
-			if (map[i][j] == '0')
-				mlx_put_image_to_window(mlx, game->mlx_win, textures->background, j * 64, i * 64);
-			if (map[i][j] == 'E')
-				mlx_put_image_to_window(mlx, game->mlx_win, textures->escape, j * 64, i * 64);
-			if (map[i][j] == 'P')
-				mlx_put_image_to_window(mlx, game->mlx_win, textures->player, j * 64, i * 64);
+			if (game->map[i][j] == '1')
+			{
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->images->background, j * 64, i * 64);
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->images->wall, j * 64, i * 64);
+			}
+			if (game->map[i][j] == '0')
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->images->background, j * 64, i * 64);
+			if (game->map[i][j] == 'E')
+			{
+				game->vect_exit->x = j;
+				game->vect_exit->y = i;
+				game->map[i][j] = '0';
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->images->background, j * 64, i * 64);
+			}
+			if (game->map[i][j] == 'P')
+			{
+				game->vector->x = j;
+				game->vector->y = i;
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->images->background, j * 64, i * 64);
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->images->player, j * 64, i * 64);
+			}
+			if (game->map[i][j] == 'C')
+			{
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->images->background, j * 64, i * 64);
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->images->collectible, j * 64, i * 64);
+			}
+			
+			// printf("coins_colleted: %d :: coins_on_map: %d\n", game->coins_collected, game->object->collectibles);		
 			j++;
 		}
 		i++;
+	}
+	if (game->coins_collected == game->object->collectibles)
+	{
+		printf("x: %d :: y: %d\n", game->vect_exit->x, game->vect_exit->y);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->images->escape, game->vect_exit->x * 64, game->vect_exit->y * 64);
 	}
 }	
