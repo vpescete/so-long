@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:11:32 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/05 19:14:46 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:58:22 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,21 @@
 
 int	main(int ac, char **av)
 {
-	char		**map;
-	int			count;
 	void		*mlx;
-	t_textures	*images;
 	t_game		*game;
 
 	if (ft_check_error(ac, av) == 0)
 		return (0);
-	map = ft_load_map(av[1]);
-	count = ft_map_height(av[1]);
-	if (check_wall(map, count) == 0)
-	{
-		exit(0);
-	}
-		ft_printf("checked wall !!!!\n");
 	mlx = mlx_init();
-	images = ft_load_img(mlx);
-	game = ft_load_game(images, mlx);
-	game->mlx = mlx;
-	game->map = map;
-	game->count = count;
-	if (check_min_requires(map, count, game) == 1)
-		ft_printf("Check the minimun requires !!!\n");
-	game->mlx_win = mlx_new_window(mlx, ft_strlen(map[0]) * 64, count * 64, "Dino & Morty!");
-	// ft_base_layer(count, ft_strlen(map[0]), images, game);
-	mlx_key_hook (game->mlx_win, ft_key_control, game);
-	game->vector = malloc(sizeof(t_vector));
-	game->vect_exit = malloc(sizeof(t_vector));
+	game = ft_preload(av[1], game, mlx);
+	check_wall(game->map, game->count);
+	ft_check_rect(game);
+	if (check_min_requires(game) == 0)
+		exit(0);
+	game->mlx_win = mlx_new_window(mlx, ft_strlen(game->map[0]) * 64,
+			game->count * 64, "Dino & Morty!");
+	mlx_loop_hook(game->mlx, ft_next_frame, game);
+	mlx_hook(game->mlx_win, 2, 0, ft_key_control, game);
 	ft_charge_map_on_screen(game);
 	mlx_loop(mlx);
 }
