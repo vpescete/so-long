@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:11:32 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/06 16:58:22 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:40:30 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int	main(int ac, char **av)
 	mlx_loop_hook(game->mlx, ft_next_frame, game);
 	mlx_hook(game->mlx_win, 2, 0, ft_key_control, game);
 	ft_charge_map_on_screen(game);
+	// mlx_string_put(game->mlx, game->mlx_win, 32, 32, game->color,
+	// 	ft_itoa(game->coins_collected));
 	mlx_loop(mlx);
 }

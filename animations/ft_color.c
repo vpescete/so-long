@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_key_control.c                                   :+:      :+:    :+:   */
+/*   ft_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 12:41:52 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/06 18:05:50 by vpescete         ###   ########.fr       */
+/*   Created: 2023/02/06 17:29:33 by vpescete          #+#    #+#             */
+/*   Updated: 2023/02/06 17:35:07 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game/so_long.h"
 
-int ft_key_control(int keycode, t_game *vars)
+int	create_trgb(unsigned char t, unsigned char r, unsigned char g,
+	unsigned char b)
 {
-	if (keycode == 53)
-		ft_close(vars);
-	if (keycode == 124)
-	{
-		ft_move_right(vars);
-		vars->pov = 0;
-	}
-	if (keycode == 123)
-	{
-		ft_move_left(vars);
-		vars->pov = 1;
-	}
-	if (keycode == 125)	
-		ft_move_up(vars);
-	if (keycode == 126)	
-		ft_move_down(vars);
-	vars->counter++;
-	ft_printf("Number of movement: %d\n", vars->counter);
-	ft_charge_map_on_screen(vars);
-	ft_win(vars);
-	return (0);
+	return (*(int *)(unsigned char [4]){b, g, r, t});
 }
+
+unsigned char	get_t(int trgb)
+{
+	return (((unsigned char *)&trgb)[3]);
+}
+
+unsigned char	get_r(int trgb)
+{
+	return (((unsigned char *)&trgb)[2]);
+}
+
+unsigned char	get_g(int trgb)
+{
+	return (((unsigned char *)&trgb)[1]);
+}
+
+unsigned char	get_b(int trgb)
+{
+	return (((unsigned char *)&trgb)[0]);
+}
+

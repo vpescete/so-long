@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 09:17:14 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/06 15:45:57 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:04:50 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_check_e_p_c(t_game *game, int i, int j)
 		mlx_put_image_to_window(game->mlx, game->mlx_win,
 			game->images->background, j * 64, i * 64);
 		mlx_put_image_to_window(game->mlx, game->mlx_win,
-			game->images->player, j * 64, i * 64);
+			game->images->player[game->pov], j * 64, i * 64);
 	}
 	if (game->map[i][j] == 'C')
 	{

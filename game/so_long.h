@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 11:40:01 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/06 16:55:01 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/06 19:28:39 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ typedef struct s_textures {
 	void	*background;
 	void	*wall;
 	void	*escape[12];
-	void	*player;
+	void	*player[2];
 	void	*collectible[12];
+	void	*win_screen[2];
 }				t_textures;
 
 typedef struct s_vector
@@ -57,6 +58,8 @@ typedef struct s_game {
 	int				widht;
 	int				height;
 	int				counter;
+	int				color;
+	int				pov;
 }				t_game;
 
 /* function to check possible errors */
@@ -79,6 +82,8 @@ void		ft_check_w_and_b(t_game *game, int i, int j);
 void		ft_check_e_p_c(t_game *game, int i, int j);
 void		ft_load_frame_escape(t_game *game);
 void		ft_load_frame_coin(t_game *game);
+void		ft_load_frame_player(t_game *game);
+void		ft_load_frame_winscreen(t_game *game);
 
 /* function for keyboard */
 void		ft_close(t_game *vars);
@@ -94,5 +99,8 @@ void		ft_win(t_game *game);
 int			ft_gettimestamp(t_game *game);
 int			ft_next_frame(t_game *game);
 char		*ft_itoa(int n);
+int			create_trgb(unsigned char t, unsigned char r, unsigned char g,
+			unsigned char b);
+void		ft_put_img_to_win(t_game *game);
 
 #endif

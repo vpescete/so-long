@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:06:31 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/06 13:10:39 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/06 19:36:07 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,18 @@ void	ft_load_img(t_game *game)
 			"src/xmp/background/ground.xpm", &game->widht, &game->height);
 	game->images->wall = mlx_xpm_file_to_image(game->mlx,
 			"src/xmp/wall/Wall_sprite0.xpm", &game->widht, &game->height);
-	game->images->player = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/player/sprite_dino0.xpm", &game->widht, &game->height);
+	ft_load_frame_player(game);
 	ft_load_frame_coin(game);
 	ft_load_frame_escape(game);
+	// ft_load_frame_winscreen(game);
+}
+
+void	ft_load_frame_player(t_game *game)
+{
+	game->images->player[0] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/player/dino0.xpm", &game->widht, &game->height);
+	game->images->player[1] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/player/dino0left.xpm", &game->widht, &game->height);
 }
 
 void	ft_load_frame_escape(t_game *game)
@@ -87,4 +95,17 @@ void	ft_load_frame_coin(t_game *game)
 			"src/xmp/collectible/Coin_Sprite10.xpm", &game->widht, &game->height);
 	game->images->collectible[11] = mlx_xpm_file_to_image(game->mlx,
 			"src/xmp/collectible/Coin_Sprite11.xpm", &game->widht, &game->height);
+}
+
+void	ft_load_frame_winscreen(t_game *game)
+{
+	int	*x;
+	int	*y;
+
+	*x = 96;
+	*y = 32;
+	game->images->win_screen[0] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/Win/WinScreen_0.xpm", x, y);
+	game->images->win_screen[1] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/Win/WinScreen_1.xpm", x, y);
 }
