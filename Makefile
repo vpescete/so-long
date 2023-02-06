@@ -5,6 +5,7 @@ SRC = window/*.c \
 		get_next_line/*.c \
 		game/*.c \
 		control_btt/*.c \
+		animations/*.c \
 
 OBJ = $(SRC.c=.o)
 
