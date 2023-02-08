@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 11:40:01 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/06 19:28:39 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:48:06 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_textures {
 	void	*escape[12];
 	void	*player[2];
 	void	*collectible[12];
-	void	*win_screen[2];
+	void	*win_screen;
 }				t_textures;
 
 typedef struct s_vector
@@ -42,6 +42,11 @@ typedef struct s_vector
 	int	x;
 	int	y;
 }				t_vector;
+
+typedef struct s_enemy {
+	void		*img;
+	t_vector	*enemy_pos;
+}				t_enemy;
 
 typedef struct s_game {
 	void			*mlx;
@@ -60,6 +65,11 @@ typedef struct s_game {
 	int				counter;
 	int				color;
 	int				pov;
+	int				win_x;
+	int				win_y;
+	t_enemy			*enemy;
+	int				pov_en;
+	int				count_en;
 }				t_game;
 
 /* function to check possible errors */
@@ -72,18 +82,18 @@ int			check_ber_ext(char *av, size_t len);
 void		ft_check_rect(t_game *game);
 
 /* function to load the map and the img */
-t_game		*ft_preload(char *map_name, t_game *game, void *mlx);
+t_game		*ft_preload_map(char *map_name, t_game *game);
+void		ft_preload(t_game *game, void *mlx);
 char		**ft_load_map(char *map_name);
 void		ft_load_obj(t_game *game);
 void		ft_load_img(t_game *game);
-void		ft_base_layer(int count, int len,
-				t_textures *textures, t_game *game);
-void		ft_check_w_and_b(t_game *game, int i, int j);
+void		ft_check_w_b_k(t_game *game, int i, int j);
 void		ft_check_e_p_c(t_game *game, int i, int j);
 void		ft_load_frame_escape(t_game *game);
 void		ft_load_frame_coin(t_game *game);
 void		ft_load_frame_player(t_game *game);
-void		ft_load_frame_winscreen(t_game *game);
+void		ft_winscreen(t_game *game);
+void		ft_load_enemy(t_game *game);
 
 /* function for keyboard */
 void		ft_close(t_game *vars);
@@ -102,5 +112,6 @@ char		*ft_itoa(int n);
 int			create_trgb(unsigned char t, unsigned char r, unsigned char g,
 			unsigned char b);
 void		ft_put_img_to_win(t_game *game);
+int			ft_enemy_behaviour(t_game *game);
 
 #endif

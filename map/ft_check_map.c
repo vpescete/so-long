@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:52:29 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/06 16:19:07 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 11:46:49 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	check_min_requires(t_game *game)
 				game->object->collectibles++;
 			else if (game->map[i][j] == 'E')
 				game->object->escape++;
+			else if (game->map[i][j] == 'K')
+				game->count_en++;
 			else if (game->map[i][j] != '1' && game->map[i][j] != '0')
 				exit(0);
 			j++;
