@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:28:21 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/08 10:20:35 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:40:14 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,17 @@ void	ft_win(t_game *game)
 	int	i;
 
 	i = 0;
-	if ((game->coins_collected == game->object->collectibles)
+	if ((game->coins_collected == game->object->collects)
 		&& game->vector->x == game->vect_exit->x
 		&& game->vector->y == game->vect_exit->y)
 	{
-		ft_printf("You win MF !!\n");
-		exit(0);
-		// ft_close(game);
+		ft_printf("You win !!\nStart a new game with a different map !\n");
+		ft_close(game);
 	}
+}
+
+int	end_game(t_game *game)
+{
+	ft_close(game);
+	return (0);
 }
