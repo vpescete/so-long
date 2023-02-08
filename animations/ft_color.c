@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:29:33 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/06 17:35:07 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:53:49 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ unsigned char	get_b(int trgb)
 {
 	return (((unsigned char *)&trgb)[0]);
 }
-

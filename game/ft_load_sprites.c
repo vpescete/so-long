@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 11:06:31 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/07 20:01:11 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:40:14 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_load_obj(t_game *game)
 {
 	game->object = (t_object *)malloc(sizeof(t_object));
-	game->object->collectibles = 0;
+	game->object->collects = 0;
 	game->object->escape = 0;
 	game->object->player = 0;
 	game->coins_collected = 0;
@@ -70,28 +70,28 @@ void	ft_load_frame_escape(t_game *game)
 
 void	ft_load_frame_coin(t_game *game)
 {
-	game->images->collectible[0] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite00.xpm", &game->widht, &game->height);
-	game->images->collectible[1] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite01.xpm", &game->widht, &game->height);
-	game->images->collectible[2] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite02.xpm", &game->widht, &game->height);
-	game->images->collectible[3] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite03.xpm", &game->widht, &game->height);
-	game->images->collectible[4] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite04.xpm", &game->widht, &game->height);
-	game->images->collectible[5] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite05.xpm", &game->widht, &game->height);
-	game->images->collectible[6] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite06.xpm", &game->widht, &game->height);
-	game->images->collectible[7] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite07.xpm", &game->widht, &game->height);
-	game->images->collectible[8] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite08.xpm", &game->widht, &game->height);
-	game->images->collectible[9] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite09.xpm", &game->widht, &game->height);
-	game->images->collectible[10] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite10.xpm", &game->widht, &game->height);
-	game->images->collectible[11] = mlx_xpm_file_to_image(game->mlx,
-			"src/xmp/collectible/Coin_Sprite11.xpm", &game->widht, &game->height);
+	game->images->collect[0] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite00.xpm", &game->widht, &game->height);
+	game->images->collect[1] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite01.xpm", &game->widht, &game->height);
+	game->images->collect[2] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite02.xpm", &game->widht, &game->height);
+	game->images->collect[3] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite03.xpm", &game->widht, &game->height);
+	game->images->collect[4] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite04.xpm", &game->widht, &game->height);
+	game->images->collect[5] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite05.xpm", &game->widht, &game->height);
+	game->images->collect[6] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite06.xpm", &game->widht, &game->height);
+	game->images->collect[7] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite07.xpm", &game->widht, &game->height);
+	game->images->collect[8] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite08.xpm", &game->widht, &game->height);
+	game->images->collect[9] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite09.xpm", &game->widht, &game->height);
+	game->images->collect[10] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite10.xpm", &game->widht, &game->height);
+	game->images->collect[11] = mlx_xpm_file_to_image(game->mlx,
+			"src/xmp/collect/Coin_Sprite11.xpm", &game->widht, &game->height);
 }

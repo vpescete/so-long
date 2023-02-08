@@ -6,55 +6,65 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 13:35:22 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/07 20:20:42 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:40:14 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game/so_long.h"
 
-char	**ft_load_map(char *map_name)
+char	**ft_load_map(char *map_name, t_game *game)
 {
 	char	**map;
-	int		count;
 	int		fd;
 	int		i;
+	char	*string;
 
-	i = 1;
-	count = ft_map_height(map_name);
-	map = malloc(count * sizeof(char *));
+	i = 0;
+	map = malloc(game->count * sizeof(char *));
 	fd = open(map_name, O_RDONLY);
-	map[0] = get_next_line(fd);
-	map[0][ft_strlen(map[0]) - 1] = '\0';
-	while (i < count)
+	string = get_next_line(fd);
+	while (i < game->count)
 	{
-		map[i] = get_next_line(fd);
+		map[i] = ft_strdup(string);
 		if (map[i][ft_strlen(map[i]) - 1] == '\n')
 			map[i][ft_strlen(map[i]) - 1] = '\0';
+		free(string);
+		string = get_next_line(fd);
 		i++;
 	}
+	free(string);
 	close(fd);
 	return (map);
 }
 
 int	ft_map_height(char *map_name)
 {
-	int	fd;
-	int	count;
+	int		fd;
+	int		count;
+	char	*string;
 
 	count = 0;
 	fd = open (map_name, O_RDONLY);
-	while (get_next_line(fd))
+	string = get_next_line(fd);
+	while (string)
+	{
 		count++;
+		free(string);
+		string = get_next_line(fd);
+	}
+	free(string);
 	close(fd);
 	return (count);
 }
 
 void	ft_charge_map_on_screen(t_game *game)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*string;
 
 	i = 0;
+	string = ft_itoa(game->counter);
 	while (i < game->count)
 	{
 		j = 0;
@@ -70,15 +80,15 @@ void	ft_charge_map_on_screen(t_game *game)
 		}
 		i++;
 	}
-	if (game->coins_collected == game->object->collectibles)
+	if (game->coins_collected == game->object->collects)
 		ft_put_img_to_win(game);
-	mlx_string_put(game->mlx, game->mlx_win, 20, 20, game->color,
-		ft_itoa(game->counter));
+	mlx_string_put(game->mlx, game->mlx_win, 20, 20, game->color, string);
+	free(string);
 }	
 
 void	ft_put_img_to_win(t_game *game)
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
-			game->images->escape[game->index], game->vect_exit->x * 64,
-			game->vect_exit->y * 64);
+		game->images->escape[game->index], game->vect_exit->x * 64,
+		game->vect_exit->y * 64);
 }

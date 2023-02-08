@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 09:17:14 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/08 11:47:02 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:40:14 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	ft_check_e_p_c(t_game *game, int i, int j)
 		mlx_put_image_to_window(game->mlx, game->mlx_win,
 			game->images->background, j * 64, i * 64);
 		mlx_put_image_to_window(game->mlx, game->mlx_win,
-			game->images->collectible[game->index], j * 64, i * 64);
+			game->images->collect[game->index], j * 64, i * 64);
 	}
 }

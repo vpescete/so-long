@@ -17,11 +17,9 @@
 #  define BUFFER_SIZE 1000
 # endif
 
-
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-
 
 char	*ft_strjoin(char *s1, char *s2);
 char	*get_line(int fd, char *line);

@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:15:52 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/08 12:59:36 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:47:25 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_load_enemy(t_game *game)
 	int	j;
 
 	i = 0;
-	game->enemy = malloc(game->count_en * sizeof(t_enemy));
+	game->enemy = malloc(sizeof(t_enemy));
 	game->enemy->enemy_pos = malloc(sizeof(t_vector));
 	while (i < game->count)
 	{
@@ -30,9 +30,9 @@ void	ft_load_enemy(t_game *game)
 				game->enemy->enemy_pos->x = j;
 				game->enemy->enemy_pos->y = i;
 				game->enemy->img = mlx_xpm_file_to_image(game->mlx,
-					"src/xmp/enemy/enemy_0.xpm", &game->widht, &game->height);
+						"src/xmp/enemy/enemy.xpm", &game->widht, &game->height);
 			}
-			j++;	
+			j++;
 		}
 		i++;
 	}

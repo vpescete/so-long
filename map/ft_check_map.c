@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:52:29 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/08 11:46:49 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:40:14 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,24 +65,29 @@ int	check_min_requires(t_game *game)
 		j = 0;
 		while (j < ft_strlen(game->map[i]))
 		{
-			if (game->map[i][j] == 'P')
-				game->object->player++;
-			else if (game->map[i][j] == 'C')
-				game->object->collectibles++;
-			else if (game->map[i][j] == 'E')
-				game->object->escape++;
-			else if (game->map[i][j] == 'K')
-				game->count_en++;
-			else if (game->map[i][j] != '1' && game->map[i][j] != '0')
-				exit(0);
+			ft_incrementer(game, i, j);
 			j++;
 		}
 		i++;
 	}
-	if (game->object->player == 1 && game->object->collectibles >= 1
+	if (game->object->player == 1 && game->object->collects >= 1
 		&& game->object->escape == 1)
 		return (1);
 	return (0);
+}
+
+void	ft_incrementer(t_game *game, int i, int j)
+{
+	if (game->map[i][j] == 'P')
+		game->object->player++;
+	else if (game->map[i][j] == 'C')
+		game->object->collects++;
+	else if (game->map[i][j] == 'E')
+		game->object->escape++;
+	else if (game->map[i][j] == 'K')
+		game->count_en++;
+	else if (game->map[i][j] != '1' && game->map[i][j] != '0')
+		exit(0);
 }
 
 void	ft_check_rect(t_game *game)
@@ -93,7 +98,10 @@ void	ft_check_rect(t_game *game)
 	while (i < game->count)
 	{
 		if (ft_strlen(game->map[i]) != ft_strlen(game->map[0]))
+		{
+			ft_printf("Error\nThe map that you passed is not right\n");
 			exit(0);
+		}
 		i++;
 	}
 }

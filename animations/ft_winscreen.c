@@ -6,7 +6,7 @@
 /*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 20:50:00 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/06 21:21:25 by vpescete         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:54:48 by vpescete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	ft_winscreen(t_game *game)
 	h = ((game->count * 64) / 2) - (32 / 2);
 	w = ((ft_strlen(game->map[0]) * 64) / 2) - (96 / 2);
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
-				"src/xmp/Win/WinScreen_0.xpm", w, h);
+		"src/xmp/Win/WinScreen_0.xpm", w, h);
 }
